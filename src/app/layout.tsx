@@ -1,10 +1,10 @@
 import './globals.css'
 
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Nunito } from 'next/font/google'
 import Image from 'next/image'
 
-const inter = Inter({ subsets: ['latin'] })
+const nunito = Nunito({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={nunito.className}>
         <header className="bg-header flex items-center justify-center bg-red-500 bg-cover bg-center bg-no-repeat pb-36 pt-16">
           <Image src="/assets/logo.svg" alt="GitHub Blog" width={150} height={100} priority />
         </header>
