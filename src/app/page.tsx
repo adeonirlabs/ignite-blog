@@ -4,25 +4,27 @@ import Link from 'next/link'
 
 export default function Home() {
   return (
-    <main className="-mt-24">
-      <section className="mx-auto flex max-w-3xl gap-8 rounded-xl bg-gray-800 p-8 shadow-xl">
+    <main className="container mx-auto -mt-24 px-4">
+      <section className="flex gap-8 rounded-xl bg-gray-800 p-8 shadow-xl">
         <Image
           className="h-36 w-36 rounded-lg"
           src="https://github.com/adeonir.png"
-          alt="Adeonir Kohl"
+          alt="Adeonir Kohl avatar"
           width={200}
           height={200}
           priority
         />
         <div className="flex flex-1 flex-col gap-2">
           <header className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold">Adeonir Kohl</h1>
+            <h1 className="text-2xl font-bold">
+              <span className="sr-only">Este é o blog de </span>Adeonir Kohl
+            </h1>
             <Link
               target="_blank"
               href="https://github.com/adeonir"
               className="flex items-start gap-2 text-sm text-blue-500 transition hover:text-blue-400"
             >
-              GitHub <ExternalLink className="h-4 w-4" />
+              GitHub <ExternalLink aria-hidden={true} className="h-4 w-4" />
             </Link>
           </header>
           <p>
@@ -30,21 +32,21 @@ export default function Home() {
             malesuada suscipit. Nunc, volutpat pulvinar vel mass.
           </p>
           <footer className="mt-auto flex items-center gap-6">
-            <div className="flex items-center gap-1 text-gray-200">
-              <Github className="h-5 w-5 text-gray-500" /> adeonir
-            </div>
-            <div className="flex items-center gap-1 text-gray-200">
-              <Building className="h-5 w-5 text-gray-500" /> Joyjet
-            </div>
-            <div className="flex items-center gap-1 text-gray-200">
-              <Users className="h-5 w-5 text-gray-500" /> 45 seguidores
-            </div>
+            <Link href="#" className="flex items-center gap-1 text-gray-200">
+              <Github aria-hidden={true} className="h-5 w-5 text-gray-500" /> adeonir
+            </Link>
+            <Link href="#" className="flex items-center gap-1 text-gray-200">
+              <Building aria-hidden={true} className="h-5 w-5 text-gray-500" /> Joyjet
+            </Link>
+            <Link href="#" className="flex items-center gap-1 text-gray-200">
+              <Users aria-hidden={true} className="h-5 w-5 text-gray-500" /> 45 seguidores
+            </Link>
           </footer>
         </div>
       </section>
-      <section className="mx-auto mt-20 flex max-w-3xl flex-col gap-2">
+      <section className="mt-20 flex flex-col gap-2">
         <div className="flex items-center justify-between">
-          <span className="font-bold text-gray-100">Publicações</span>
+          <h2 className="font-bold text-gray-100">Publicações</h2>
           <span className="whitespace-nowrap text-sm text-gray-400">6 publicações</span>
         </div>
         <input
@@ -53,7 +55,7 @@ export default function Home() {
           placeholder="Buscar conteúdo"
         />
       </section>
-      <section className="mx-auto mt-12 grid max-w-3xl grid-cols-2 gap-8">
+      <section className="mt-12 grid grid-cols-2 gap-8">
         <article className="rounded-lg bg-gray-800 shadow-lg transition hover:bg-gray-700/70">
           <Link href="#" className="flex flex-col gap-4 p-8">
             <header className="flex items-start justify-between gap-4">
