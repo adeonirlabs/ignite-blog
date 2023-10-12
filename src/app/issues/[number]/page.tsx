@@ -5,8 +5,13 @@ import { Calendar, ChevronLeft, ExternalLink, Github, Loader, MessageCircle } fr
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import Markdown from 'react-markdown'
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
+import tsx from 'react-syntax-highlighter/dist/cjs/languages/prism/tsx'
+import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 import type { Issue } from '~/models/issue'
+
+SyntaxHighlighter.registerLanguage('tsx', tsx)
 
 dayjs.extend(relativeTime)
 
@@ -53,14 +58,14 @@ export default function Issue({ params }: { params: { number: number } }) {
             <h1 className="mt-4 text-2xl font-bold">{issue.title}</h1>
           </header>
           <footer className="mt-auto flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-6">
-            <div className="flex items-center gap-1 text-gray-200 transition hover:text-gray-100">
+            <div className="flex items-center gap-1 text-gray-200 transition">
               <Github aria-hidden={true} className="h-5 w-5 shrink-0 text-gray-500" /> {issue.user.login}
             </div>
-            <div className="flex items-center gap-1 text-gray-200 transition hover:text-gray-100">
+            <div className="flex items-center gap-1 text-gray-200 transition">
               <Calendar aria-hidden={true} className="h-5 w-5 shrink-0 text-gray-500" />
               {dayjs(new Date(issue.createdAt)).fromNow()}
             </div>
-            <div className="flex items-center gap-1 text-gray-200 transition hover:text-gray-100">
+            <div className="flex items-center gap-1 text-gray-200 transition">
               <MessageCircle aria-hidden={true} className="h-5 w-5 shrink-0 text-gray-500" /> {issue.comments}
               comentários
             </div>
@@ -69,7 +74,28 @@ export default function Issue({ params }: { params: { number: number } }) {
       </section>
       <main>
         <article className="mt-10 flex flex-col gap-4 px-8">
-          <Markdown>{issue.body}</Markdown>
+          <Markdown
+            components={{
+              code({ className, ...props }) {
+                const hasLang = /language-(\w+)/.exec(className || '')
+                return hasLang ? (
+                  <SyntaxHighlighter
+                    style={oneDark}
+                    language={hasLang[1]}
+                    PreTag="div"
+                    showLineNumbers={true}
+                    useInlineStyles={true}
+                  >
+                    {String(props.children).replace(/\n$/, '')}
+                  </SyntaxHighlighter>
+                ) : (
+                  <code className={className} {...props} />
+                )
+              },
+            }}
+          >
+            {issue.body}
+          </Markdown>
         </article>
       </main>
     </div>

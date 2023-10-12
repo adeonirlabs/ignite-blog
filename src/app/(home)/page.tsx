@@ -52,13 +52,13 @@ export default function Home() {
           </header>
           <p>{user.bio}</p>
           <footer className="mt-auto flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-6">
-            <div className="flex items-center gap-1 text-gray-200 transition hover:text-gray-100">
+            <div className="flex items-center gap-1 text-gray-200 transition">
               <Github aria-hidden={true} className="h-5 w-5 shrink-0 text-gray-500" /> {user.login}
             </div>
-            <div className="flex items-center gap-1 text-gray-200 transition hover:text-gray-100">
+            <div className="flex items-center gap-1 text-gray-200 transition">
               <Building aria-hidden={true} className="h-5 w-5 shrink-0 text-gray-500" /> {user.company}
             </div>
-            <div className="flex items-center gap-1 text-gray-200 transition hover:text-gray-100">
+            <div className="flex items-center gap-1 text-gray-200 transition">
               <Users aria-hidden={true} className="h-5 w-5 shrink-0 text-gray-500" /> {user.followers} seguidores
             </div>
           </footer>
