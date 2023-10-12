@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export default function Home() {
   return (
-    <main className="container mx-auto -mt-24 px-4">
+    <div className="mx-auto -mt-24 max-w-6xl px-4">
       <section className="flex gap-8 rounded-xl bg-gray-800 p-8 shadow-xl">
         <Image
           className="h-36 w-36 rounded-lg"
@@ -22,24 +22,24 @@ export default function Home() {
             <Link
               target="_blank"
               href="https://github.com/adeonir"
-              className="flex items-start gap-2 text-sm text-blue-500 transition hover:text-blue-400"
+              className="flex items-start gap-2 text-sm uppercase text-blue-500 transition hover:text-blue-400"
             >
-              GitHub <ExternalLink aria-hidden={true} className="h-4 w-4" />
+              GitHub <ExternalLink aria-hidden={true} className="h-4 w-4 shrink-0" />
             </Link>
           </header>
           <p>
             Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu viverra massa quam dignissim aenean
             malesuada suscipit. Nunc, volutpat pulvinar vel mass.
           </p>
-          <footer className="mt-auto flex items-center gap-6">
-            <Link href="#" className="flex items-center gap-1 text-gray-200">
-              <Github aria-hidden={true} className="h-5 w-5 text-gray-500" /> adeonir
+          <footer className="mt-auto flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-6">
+            <Link href="#" className="flex items-center gap-1 text-gray-200 transition hover:text-gray-100">
+              <Github aria-hidden={true} className="h-5 w-5 shrink-0 text-gray-500" /> adeonir
             </Link>
-            <Link href="#" className="flex items-center gap-1 text-gray-200">
-              <Building aria-hidden={true} className="h-5 w-5 text-gray-500" /> Joyjet
+            <Link href="#" className="flex items-center gap-1 text-gray-200 transition hover:text-gray-100">
+              <Building aria-hidden={true} className="h-5 w-5 shrink-0 text-gray-500" /> Joyjet
             </Link>
-            <Link href="#" className="flex items-center gap-1 text-gray-200">
-              <Users aria-hidden={true} className="h-5 w-5 text-gray-500" /> 45 seguidores
+            <Link href="#" className="flex items-center gap-1 text-gray-200 transition hover:text-gray-100">
+              <Users aria-hidden={true} className="h-5 w-5 shrink-0 text-gray-500" /> 45 seguidores
             </Link>
           </footer>
         </div>
@@ -55,7 +55,7 @@ export default function Home() {
           placeholder="Buscar conteúdo"
         />
       </section>
-      <section className="mt-12 grid grid-cols-2 gap-8">
+      <main className="mt-12 grid grid-cols-2 gap-8">
         <article className="rounded-lg bg-gray-800 shadow-lg transition hover:bg-gray-700/70">
           <Link href="#" className="flex flex-col gap-4 p-8">
             <header className="flex items-start justify-between gap-4">
@@ -112,7 +112,7 @@ export default function Home() {
             </p>
           </Link>
         </article>
-      </section>
-    </main>
+      </main>
+    </div>
   )
 }
