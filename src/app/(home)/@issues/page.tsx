@@ -14,11 +14,17 @@ const getData = async (): Promise<Issue[]> => {
 }
 
 export default function Issues() {
+  const [data, setData] = useState<Issue[]>()
   const [issues, setIssues] = useState<Issue[]>()
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
-    getData().then((data) => setIssues(data))
+    getData().then((data) => setData(data))
   }, [])
+
+  useEffect(() => {
+    setIssues(data?.filter((issue) => issue.title.toLowerCase().includes(search.toLowerCase())))
+  }, [data, search])
 
   if (!issues) {
     return (
@@ -37,6 +43,8 @@ export default function Issues() {
         </div>
         <input
           type="search"
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
           className="rounded-lg border border-gray-600 bg-gray-950 px-4 py-3 transition placeholder:text-gray-500 focus:border-blue-500/70"
           placeholder="Buscar conteúdo"
         />
