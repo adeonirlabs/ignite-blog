@@ -19,7 +19,7 @@ export default function Home() {
             <h1 className="text-2xl font-bold">Adeonir Kohl</h1>
             <Link
               href="https://github.com/adeonir"
-              className="flex items-start gap-1 text-sm text-blue-500"
+              className="flex items-start gap-1 text-sm text-blue-500 transition hover:text-blue-400"
               target="_blank"
             >
               GitHub <ExternalLink className="h-4 w-4" />
@@ -41,6 +41,17 @@ export default function Home() {
             </div>
           </footer>
         </div>
+      </section>
+      <section className="mx-auto mt-20 flex max-w-4xl flex-col gap-2">
+        <div className="flex items-center justify-between">
+          <span className="font-bold text-gray-100">Publicações</span>
+          <span className="text-sm text-gray-400">6 publicações</span>
+        </div>
+        <input
+          type="search"
+          className="rounded-lg border border-gray-600 bg-gray-950 px-4 py-3 transition placeholder:text-gray-500 focus:border-blue-500/70"
+          placeholder="Buscar conteúdo"
+        />
       </section>
     </main>
   )
