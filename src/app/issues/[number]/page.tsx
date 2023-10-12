@@ -19,7 +19,7 @@ const getData = async (number: number): Promise<Issue> => {
   return await fetch(`/api/issues/${number}`).then((res) => res.json())
 }
 
-export default function Issue({ params }: { params: { number: number } }) {
+export default function IssuePage({ params }: { params: { number: number } }) {
   const { number } = params
   const [issue, setIssue] = useState<Issue>()
 
@@ -36,7 +36,7 @@ export default function Issue({ params }: { params: { number: number } }) {
   }
 
   return (
-    <div className="mx-auto -mt-24 max-w-4xl px-4">
+    <div className="mx-auto -mt-24 max-w-4xl px-4 pb-16">
       <section className="flex gap-8 rounded-xl bg-gray-800 p-8 shadow-xl">
         <div className="flex flex-1 flex-col gap-2">
           <header>

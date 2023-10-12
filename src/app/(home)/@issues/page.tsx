@@ -13,7 +13,7 @@ const getData = async (): Promise<Issue[]> => {
   return await fetch('/api/issues').then((res) => res.json())
 }
 
-export default function Issues() {
+export default function IssuesPage() {
   const [data, setData] = useState<Issue[]>()
   const [issues, setIssues] = useState<Issue[]>()
   const [search, setSearch] = useState('')
@@ -35,7 +35,7 @@ export default function Issues() {
   }
 
   return (
-    <div className="mx-auto max-w-4xl px-4">
+    <div className="mx-auto max-w-4xl px-4 pb-16">
       <section className="mt-20 flex flex-col gap-2">
         <div className="flex items-center justify-between">
           <h2 className="font-bold text-gray-100">Publicações</h2>

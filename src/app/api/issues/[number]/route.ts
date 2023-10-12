@@ -5,6 +5,7 @@ export async function GET(_: Request, { params }: { params: { number: number } }
   const response = await fetch(`https://api.github.com/repos/adeonirlabs/ignite-blog/issues/${number}`, {
     headers: {
       Authorization: `Bearer ${process.env.API_TOKEN}`,
+      'X-GitHub-Api-Version': '2022-11-28',
     },
   }).then((res) => res.json())
 

@@ -10,7 +10,7 @@ const getData = async (): Promise<User> => {
   return await fetch('/api/user').then((res) => res.json())
 }
 
-export default function Home() {
+export default function HomePage() {
   const [user, setUser] = useState<User>()
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function Home() {
   }
 
   return (
-    <div className="mx-auto -mt-24 max-w-4xl px-4">
+    <div className="mx-auto -mt-24 max-w-4xl px-4 pb-16">
       <section className="flex gap-8 rounded-xl bg-gray-800 p-8 shadow-xl">
         <Image
           className="h-36 w-36 rounded-lg"

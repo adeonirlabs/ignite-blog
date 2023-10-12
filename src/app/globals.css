@@ -20,3 +20,9 @@
     @apply outline-none;
   }
 }
+
+@layer components {
+  pre {
+    @apply text-[13px];
+  }
+}
