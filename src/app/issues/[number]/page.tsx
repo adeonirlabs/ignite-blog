@@ -38,7 +38,7 @@ export default function IssuePage({ params }: { params: { number: number } }) {
   return (
     <div className="mx-auto -mt-24 max-w-4xl px-4 pb-16">
       <section className="flex gap-8 rounded-xl bg-gray-800 p-8 shadow-xl">
-        <div className="flex flex-1 flex-col gap-2">
+        <div className="flex flex-1 flex-col gap-8">
           <header>
             <div className="flex items-center justify-between">
               <Link
