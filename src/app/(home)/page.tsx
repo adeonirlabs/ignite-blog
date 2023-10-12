@@ -52,15 +52,15 @@ export default function Home() {
           </header>
           <p>{user.bio}</p>
           <footer className="mt-auto flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-6">
-            <Link href="#" className="flex items-center gap-1 text-gray-200 transition hover:text-gray-100">
+            <div className="flex items-center gap-1 text-gray-200 transition hover:text-gray-100">
               <Github aria-hidden={true} className="h-5 w-5 shrink-0 text-gray-500" /> {user.login}
-            </Link>
-            <Link href="#" className="flex items-center gap-1 text-gray-200 transition hover:text-gray-100">
+            </div>
+            <div className="flex items-center gap-1 text-gray-200 transition hover:text-gray-100">
               <Building aria-hidden={true} className="h-5 w-5 shrink-0 text-gray-500" /> {user.company}
-            </Link>
-            <Link href="#" className="flex items-center gap-1 text-gray-200 transition hover:text-gray-100">
+            </div>
+            <div className="flex items-center gap-1 text-gray-200 transition hover:text-gray-100">
               <Users aria-hidden={true} className="h-5 w-5 shrink-0 text-gray-500" /> {user.followers} seguidores
-            </Link>
+            </div>
           </footer>
         </div>
       </section>

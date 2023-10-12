@@ -1,4 +1,4 @@
-import { postSchema } from '~/models/post'
+import { issueSchema } from '~/models/issue'
 
 export async function GET() {
   const response = await fetch('https://api.github.com/search/issues?q=is:issue%20repo:adeonirlabs/ignite-blog', {
@@ -7,9 +7,9 @@ export async function GET() {
     },
   }).then((res) => res.json())
 
-  const posts = postSchema.array().safeParse(response.items)
+  const issues = issueSchema.array().safeParse(response.items)
 
-  if (!posts.success) throw new Error('Invalid data')
+  if (!issues.success) throw new Error('Invalid data')
 
-  return Response.json(posts.data)
+  return Response.json(issues.data)
 }

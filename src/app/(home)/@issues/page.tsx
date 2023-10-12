@@ -5,22 +5,22 @@ import { Loader } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
-import type { Post } from '~/models/post'
+import type { Issue } from '~/models/issue'
 
 dayjs.extend(relativeTime)
 
-const getData = async (): Promise<Post[]> => {
-  return await fetch('/api/posts').then((res) => res.json())
+const getData = async (): Promise<Issue[]> => {
+  return await fetch('/api/issues').then((res) => res.json())
 }
 
-export default function Posts() {
-  const [posts, setPosts] = useState<Post[]>()
+export default function Issues() {
+  const [issues, setIssues] = useState<Issue[]>()
 
   useEffect(() => {
-    getData().then((data) => setPosts(data))
+    getData().then((data) => setIssues(data))
   }, [])
 
-  if (!posts) {
+  if (!issues) {
     return (
       <div className="mx-auto flex max-w-4xl items-center justify-center px-4 py-16">
         <Loader className="h-8 w-8 animate-spin text-blue-500 duration-1000" />
@@ -33,7 +33,7 @@ export default function Posts() {
       <section className="mt-20 flex flex-col gap-2">
         <div className="flex items-center justify-between">
           <h2 className="font-bold text-gray-100">Publicações</h2>
-          <span className="whitespace-nowrap text-sm text-gray-400">{posts.length} publicações</span>
+          <span className="whitespace-nowrap text-sm text-gray-400">{issues.length} publicações</span>
         </div>
         <input
           type="search"
@@ -42,16 +42,16 @@ export default function Posts() {
         />
       </section>
       <main className="mt-12 grid grid-cols-2 gap-8">
-        {posts.map((post) => (
-          <article key={post.id} className="rounded-lg bg-gray-800 shadow-lg transition hover:bg-gray-700/70">
-            <Link href={`/posts/${post.id}`} className="flex flex-col gap-4 p-8">
+        {issues.map((issue) => (
+          <article key={issue.number} className="rounded-lg bg-gray-800 shadow-lg transition hover:bg-gray-700/70">
+            <Link href={`/issues/${issue.number}`} className="flex flex-col gap-4 p-8">
               <header className="flex items-start justify-between gap-4">
-                <h1 className="text-xl font-bold">{post.title}</h1>
+                <h1 className="text-xl font-bold">{issue.title}</h1>
                 <span className="whitespace-nowrap text-sm text-gray-400">
-                  {dayjs(new Date(post.createdAt)).fromNow()}
+                  {dayjs(new Date(issue.createdAt)).fromNow()}
                 </span>
               </header>
-              <p className="line-clamp-4 text-gray-300">{post.body}</p>
+              <p className="line-clamp-4 text-gray-300">{issue.body}</p>
             </Link>
           </article>
         ))}
