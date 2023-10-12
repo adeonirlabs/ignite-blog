@@ -14,7 +14,7 @@ export const issueSchema = z
   })
   .transform((issue) => ({
     number: issue.number,
-    user: issue.user.login,
+    user: issue.user,
     title: issue.title,
     body: issue.body,
     htmlUrl: issue.html_url,
